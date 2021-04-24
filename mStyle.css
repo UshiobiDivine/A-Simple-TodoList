@@ -1,0 +1,68 @@
+html{
+    box-sizing: border-box;
+}
+*,*:after, *:before{
+    box-sizing: inherit;
+}
+h1{
+    text-align: center;
+    color:rgb(153, 0, 255);
+}
+.container{
+    background-color: azure;
+    display: grid;
+    grid-gap: 1px;
+    height: 25vh;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+@media(max-width:400px){
+    .container{
+        height: 40vh;
+        margin-bottom: auto;
+    }
+}
+
+.item{
+    
+    padding: 3px;
+    margin: 10px;
+    background-color: rgb(140, 1, 253);
+    text-align: center;
+}
+.item1, .item2{
+    color: rgb(255, 255, 255);
+    background-color: rgb(183, 111, 250);
+}
+.item3, .item4{
+    color: rgb(255, 255, 255);
+
+    background-color: rgb(209, 159, 255);
+}
+.item5, .item6{
+    color: rgb(255, 255, 255);
+
+    background-color: rgb(183, 111, 250);
+}
+.item7, .item8{
+    color: rgb(255, 255, 255);
+
+    background-color: rgb(209, 159, 255);
+}
+.button{
+    
+    
+    text-align: center;
+}
+.but{
+    padding: 5px 100px;
+    background-color: blueviolet;
+    color: white;
+    margin-top: 20px;
+    
+}
+

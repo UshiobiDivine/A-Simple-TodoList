@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #444;
+    letter-spacing: 0.5px;
+}
+
+h1,h2{
+    font-weight: normal;
+}
+#wrapper{
+    width: 90%;
+    max-width: 960px;
+    margin: 20px auto;
+    border-radius: 6px;
+    box-shadow: 0px 1px 6px rgb(209, 208, 211);
+    box-sizing: border-box;
+    padding: 0 0 20px;
+    overflow: hidden;
+    border: 1px solid lightgray;
+}
+#page-banner{
+    background: #eee;
+    padding: 10px 0;
+}
+#page-banner h1, #page-banner p{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    
+}
+#page-banner input{
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #444;
+}
+#book-list, #add-book, #tabbed-content{
+    margin:20px;
+}
+#book-list ul, #tabbed-content ul{
+    list-style-type: none;
+    padding: 0;
+}
+#book-list li{
+    padding: 20px;
+    border-left: 5px solid #ddd;
+    margin: 20px 10px;
+    opacity: 1;
+    height:100%;
+    transition: all 1s;
+}
+#book-list li:hover{
+    border-color: #9361bf;
+}
+.delete{
+    color: white;
+    float: right;
+    background: #9361bf;
+    padding: 6px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.delete:hover{
+    background: rgb(137, 3, 199);
+}
+#add-book{
+    width: 400px;
+    margin: 0 auto;
+}
+#add-book button{
+    border: 1px solid #9361bf;
+    background: #9361bf;
+    padding: 10px 20px;
+    font-size: 16px;
+    display: inline-block;
+    margin: 0;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    width: 100px;
+    float: left;
+    margin: 20px 0;
+    border-left: 0;
+    color: white;
+}
+#add-book button:hover{
+    background: #b482df;
+}
+#add-book input{
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 4px 0 04px;
+    box-sizing: border-box;
+    width: 300px;
+    float: left;
+}
+#add-book:aftter{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.title1{
+    padding-left: 10px;
+}
+
+.aPanel{
+    opacity: 1;
+    height:100%;
+    transition: all 1s;
+}
+.aPanel.aPanelHidden{
+    opacity: 0;
+    height: 0px;
+    
+}
+.aPanelShown{
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+}
+.aPanelStyle{
+    background: rgb(197, 69, 144);
+}
+
+    </style>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <header>
+            <div id="page-banner">
+                <h1 class="title">Bookoram</h1>
+                <p>Books for Divine</p>
+                <form id="search-books">
+                    <input type="text" placeholder="Search books...">
+                </form>
+            </div>
+        </header>
+
+        <div class="kkk">
+            <button onclick="fadeInAndOut(this)" style="width:100%">Toggle</button>
+            <div class="aPanel aPanelHidden aPanelStyle">
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="book-list">
+            <h2 class="title1">Books to read</h2>
+            <ul>
+                <li>
+                    <span class="name">Name of the wind</span>
+                    <span class="delete">delete</span>
+                </li>
+                <li>
+                    <span class="name">The wise man</span>
+                    <span class="delete">delete</span>
+                </li>
+                <li>
+                    <span class="name">Divine on the shore</span>
+                    <span class="delete" >delete</span>
+                </li>
+                <li>
+                    <span class="name">Esther and Divine  </span>
+                    <span class="delete">delete</span>
+                </li>
+            </ul>
+        </div>
+
+        <form id="add-book">
+            <input type="text" placeholder="Add a book..."/>
+            <button>Add</button>
+        </form>
+    </div>
+
+
+    <script>
+
+var list = document.querySelectorAll('#book-list li .name');
+list.forEach(function (book) {
+    book.textContent += ' (book title)';
+});
+
+var bookList = document.querySelector('#book-list');
+
+const banner = document.querySelector('#page-banner');
+const clonedBan = banner.cloneNode(false);
+//console.log(bookList.previousElementSibling);
+
+function fadeInAndOut(thz) {
+    var elmt = thz.nextElementSibling;
+    elmt.classList.toggle("aPanelHidden");
+}
+
+//Delete function
+var btns = document.querySelectorAll('#book-list .delete');
+btns.forEach(function (b) {
+    b.addEventListener('click', function (event) {
+        alert('Delete this book?');
+        const li = event.target.parentElement;
+        li.style.opacity=0;
+        li.style.display = 'none';
+        
+    })
+});
+
+
+//Hide Checkbox
+// var chkbtn = document.querySelector('#wrapper .checker');
+// chkbtn.addEventListener('change', function (e) {
+//     if (chkbtn.checked == true) {
+//         bookList.style.display = 'none';
+        
+//     } else {
+//         bookList.style.display = 'initial';
+//     }
+// });
+
+
+
+const aForm = document.forms['add-book'];
+aForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+var textss = aForm.querySelector('input[type="text"]').value;
+
+//create elements
+    const li = document.createElement('li');
+    const myTxt = document.createElement('span');
+    const myBtn = document.createElement('span');
+
+//add content
+    myBtn.textContent='delete';
+    myTxt.textContent=textss;
+
+    myBtn.classList.add('delete');
+    myTxt.classList.add('name');
+
+    li.appendChild(myTxt);
+    li.appendChild(myBtn);
+    
+    bookList.querySelector('ul').appendChild(li);
+
+    var aa = document.querySelector('#add-book input[type="text"]');
+    aa.value = '';
+
+    
+    /*var btns = document.querySelectorAll('#book-list .delete');
+    btns.forEach(function (b) {
+        b.addEventListener('click', function (event) {
+            const li = event.target.parentElement;
+            li.style.display = 'none';
+
+        })
+    });*/
+
+
+});
+
+
+ 
+    </script>
+</body>
+</html>
